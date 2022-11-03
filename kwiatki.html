@@ -1,0 +1,47 @@
+<html>
+<head>
+<script>
+function less() {
+	var kwiatki = "@@@@@@@@@@@@@@@@@@@@";
+	var miejsceNaKwiatki = document.getElementById("wynik");
+	miejsceNaKwiatki.innerText=' ';
+	var licznikPetli=0;
+	
+	do {
+		let kwiatkiJakoObiekt = document.createTextNode(kwiatki);
+		let nowaLinia = document.createElement("br");
+		miejsceNaKwiatki.append(kwiatkiJakoObiekt, nowaLinia);
+		kwiatki = kwiatki.slice(0, -1);
+		licznikPetli++;
+		}
+	while(licznikPetli<20);
+}
+
+function more() {
+	var kwiatki = " ";
+	var miejsceNaKwiatki = document.getElementById("wynik");
+	miejsceNaKwiatki.innerText=' ';
+	var licznikPetli=0;
+		
+	do {
+		kwiatki +="@";
+		let kwiatkiJakoObiekt = document.createTextNode(kwiatki);
+		let nowaLinia = document.createElement("br");
+		miejsceNaKwiatki.append(kwiatkiJakoObiekt, nowaLinia);
+		licznikPetli++;
+	}
+	while(licznikPetli<20);
+}
+</script>
+</head>
+<body>
+<meta charset="utf-8"/>
+<button type="button" onclick="more()">Więcej kwiatów...</button>
+<button type="button" onclick="less()">Mniej kwiatów...</button>
+<br>
+<div id="wynik">TRAWNIK</div>
+<br>
+<a href="index.html">Strona Główna</a>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<h2>Wersja rozbudowana</h2>
+<p style="text-align: center;">Wpisz swoje imię:</p>
+<form style="text-align: center; margin-top: 1cm;"
+action="javascript:wyczyscPowitanie();javascript:sprawdzImie()">
+1
+<input id="imie" type="text" style="text-align: center; vertical-align: middle; font-size:
+xx-large;" placeholder="Twoje imię..." required="required" autofocus="autofocus"
+pattern="[a-zA-ZłźżśąęćńóŁŻŚ]{3,20}" title="Tu wpisać imię bez zdrobnień!" maxlength="24"
+autocomplete="off" size="19" onclick="document.getElementById('imie').placeholder='';
+document.getElementById('imie').value='';"><br>
+<!-- Powyżej wstawiono dwa razy podwójne apostrofy w atrybucie „placeholder” oraz we
+„value” -->
+<input type="submit" style="font-size: x-large; margin-top: 2cm;" value="Zatwierdź...">
+</form>
+<p id="miejsceNaPowitanie" style="color: #cd1585; text-align: center; margin-top:
+2cm;">...</p>
+<script>
+function wyczyscPowitanie() {
+miejsceDoCzyszczenia = document.getElementById("miejsceNaPowitanie");
+miejsceDoCzyszczenia.textContent = ""; // Można tutaj użyć także:
+miejsceDoCzyszczenia.innerHTML="";
+}
+alert("Kopiowanie gotowego kodu z PDF to bardzo zły pomysł!");
+function sprawdzImie() {
+var imie = document.getElementById("imie").value;
+var imie = imie.toUpperCase();
+var ostateczneImie = ximie+"!";
+var ostatniaLitera = "A!";
+var noweImie = ostateczneImie.replace(ostatniaLitera, "O!");
+var noweImie2 = ostateczneImie.replace(ostatniaLitera, "U!");
+var miejsceNaKomunikat = xdocument.getElementById("miejsceNaPowitanie");
+const wykazZdrobnien = ['ANIA', 'MONIA', 'KASIA', 'BASIA', 'MAŁGOSIA', 'GOSIA'];
+alert("Kopiowanie gotowego kodu z PDF to bardzo zły pomysł!");
+if ((imie.charAt(imie.length-1)=="A") && (imie!=="KUBA") && (!
+wykazZdrobnien.includes(imie))) {
+tekstJesliKobieta = document.createTextNode("Witaj na mojej witrynie,
+"+noweImie+" Jesteś piękną kobietą!");
+xmiejsceNaKomunikat.appendChild(tekstJesliKobieta);
+}
+else if (wykazZdrobnien.includes(imie)) {
+tekstJesliKobieta = document.createTextNode("Witaj na mojej witrynie,
+"+noweImie2+" Jesteś piękną kobietą!");
+miejsceNaKomunikat.appendChild(tekstJesliKobieta);
+}
+else {
+xtekstJesliMezczyzna = document.createTextNode("Witaj "+imie+" na mojej
+witrynie. Równy z Ciebie facet!");
+miejsceNaKomunikat.appendChild(tekstJesliMezczyzna);
+} alert("Kopiowanie gotowego kodu z PDF to bardzo zły pomysł!");
+}
+</script>

@@ -1,0 +1,39 @@
+<html>
+<body>
+<meta charset="utf-8" />
+<script>
+function choinka(){
+	var igielki = ""; 
+	var podstawka = "#";
+	var miejsceNaChoinke = document.getElementById("wynik");
+	miejsceNaChoinke.innerText=''; 
+	var licznikPetli=0;
+
+	do {
+		igielki +="^"; 
+		let igielkiJakoObiekt = document.createTextNode(igielki);
+		let nowaLinia = document.createElement("br");
+		miejsceNaChoinke.append(igielkiJakoObiekt, nowaLinia);
+		licznikPetli++;
+	}
+
+while(licznikPetli<13);
+
+	for (licznikPodstawka = 0; licznikPodstawka < 3; licznikPodstawka++) {
+		let podstawkaJakoObiekt = document.createTextNode(podstawka);
+		let nowaLinia = document.createElement("br");
+		miejsceNaPodstawke = document.getElementById("wynik");
+		miejsceNaPodstawke.append(podstawkaJakoObiekt, nowaLinia);
+	}
+
+	let podstawkaJakoObiekt = document.createTextNode("#####");
+	miejsceNaPodstawke = document.getElementById("wynik");
+	miejsceNaPodstawke.appendChild(podstawkaJakoObiekt);
+}
+</script>
+<button type="button" style="text-align: center" onclick="choinka()">Choinka </button><br><br>
+<div id="wynik" style="text-align: center">[Choinka]</div>
+<a href="index.html">Powrót na główną</a></li>
+
+</body>
+</html>

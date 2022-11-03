@@ -1,0 +1,53 @@
+<html>
+
+<meta charset="utf-8"/>
+<head>
+<script>
+function zaszyfruj(tekstDoPrzetworzenia) {
+	return tekstDoPrzetworzenia.split('').map((kazdyKolejnyElementTablicy) => {
+		kodZnakuASCII = kazdyKolejnyElementTablicy.charCodeAt(0);
+		if (kodZnakuASCII < 65 || kodZnakuASCII > 90) {
+		return String.fromCharCode(kodZnakuASCII);
+		}
+	else if (kodZnakuASCII < 78) {
+	return String.fromCharCode(kodZnakuASCII + 13);
+	}
+	else {
+	return String.fromCharCode(kodZnakuASCII - 13);
+	}
+	}).join('');
+}
+
+function odszyfruj(tekstDoPrzetworzenia) {
+	return tekstDoPrzetworzenia.replace(/[A-Z]/g, kazdyKolejnyElementPierwszegoParametru => String.fromCharCode((kazdyKolejnyElementPierwszegoParametru.charCodeAt(0) % 26) + 65));
+	}
+
+function proceduraSzyfrowania() {
+	tekstDoSzyfrowania = document.getElementById("wprowadzonyTekst").value.toUpperCase();
+	tekstDoSzyfrowaniaJakoObiekt = document.createTextNode(zaszyfruj(tekstDoSzyfrowania)); 
+	miejsceNaZaszyfrowanyTekst = document.getElementById("wynik");
+	miejsceNaZaszyfrowanyTekst.innerText=' ';
+	miejsceNaZaszyfrowanyTekst.appendChild(tekstDoSzyfrowaniaJakoObiekt);
+}
+
+function proceduraOdszyfrowania() {
+	tekstDoOdszyfrowania = document.getElementById("wprowadzonyTekst").value.toUpperCase();
+	tekstDoOdszyfrowaniaJakoObiekt = document.createTextNode(odszyfruj(tekstDoOdszyfrowania)); 
+	miejsceNaOdszyfrowanyTekst = document.getElementById("wynik");
+	miejsceNaOdszyfrowanyTekst.innerText=' ';
+	miejsceNaOdszyfrowanyTekst.appendChild(tekstDoOdszyfrowaniaJakoObiekt);
+}
+</script>
+</head>
+<body>
+<h1>Szyfr Cezara</h1>
+<textarea id="wprowadzonyTekst" name="wprowadzonyTekst"></textarea><br>
+<button type="button" onclick="proceduraSzyfrowania()">Szyfruj...</button>
+<button type="button" onclick="proceduraOdszyfrowania()">Odszyfruj...</button>
+<div>
+<p>Przetworzony tekst:</p>
+<p id="wynik"></p>
+</div>
+<a href="index.html">Strona Główna</a>
+</body>
+</html>
