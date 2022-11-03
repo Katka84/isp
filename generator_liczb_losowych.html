@@ -1,0 +1,66 @@
+<html>
+<body>
+<h1>Popularność liczby</h1>
+<p>Program wygenerował losowy ciąg liczb. Możesz wyszukać w tym ciągu najczęściej
+występujące liczby.</p>
+
+<p id="ciagLiczb">...</p>
+<!-- Zawartością znacznika powyżej muszą być kropki (lub cokolwiek), bo inaczej nie będzie
+działać -->
+<script>
+var liczbaElementow = 30;
+var gornyZakres = 9;
+var tablicaLiczb = new Array(liczbaElementow);
+var numerElementuTablicy, pozycjaElementu, wygenerowanaLiczba;
+var wykonanoJuzSortowanie = false;
+
+// ============ FUNKCJA GENEROWANIA LICZB LOSOWYCH =============
+function generuj() 
+{
+for(numerElementuTablicy=0; numerElementuTablicy < liczbaElementow; numerElementuTablicy++) {
+// Wygenerowanie liczby
+wygenerowanaLiczba = Math.floor(Math.random() * (gornyZakres + 1));
+
+tablicaLiczb[numerElementuTablicy] = wygenerowanaLiczba;
+}
+
+// Usuwamy potencjalny stary istniejący już wpis:
+miejsceUsunieciaZawartosci = document.getElementById("ciagLiczb");
+miejsceUsunieciaZawartosci.removeChild(miejsceUsunieciaZawartosci.firstChild);
+// Przy wypisywaniu tablicy, jej elementy domyślnie oddzielane się przecinkami.
+// Lepiej jednak zrobić to samemu (można dodać wtedy odstęp po przecinku):
+var tablicaLiczbDoWypisania = tablicaLiczb.join(", ");
+
+zawartoscTablicyDoWypisania = document.createTextNode(tablicaLiczbDoWypisania);
+miejsceZawartosciTablicyDoWypisania = document.getElementById("ciagLiczb");
+miejsceZawartosciTablicyDoWypisania.appendChild(zawartoscTablicyDoWypisania);
+
+// ZRESETOWANIE MOŻLIWOŚCI SORTOWANIA
+wykonanoJuzSortowanie = false;
+}
+// =================== FUNKCJA SORTOWANIA ===================
+function sortuj() {
+
+if(wykonanoJuzSortowanie == false) {
+posortowanaTablicaLiczbDoWypisania = tablicaLiczb.sort();
+posortowanaTablicaLiczbDoWypisania = tablicaLiczb.join(", ");
+zawartoscPosortowanejTablicyDoWypisania =
+document.createTextNode(posortowanaTablicaLiczbDoWypisania);
+miejsceZawartosciPosortowanejTablicyDoWypisania =
+document.getElementById("ciagLiczb");
+
+miejsceZawartosciPosortowanejTablicyDoWypisania.replaceChild(
+zawartoscPosortowanejTablicyDoWypisania, zawartoscTablicyDoWypisania);
+wykonanoJuzSortowanie = true;
+}
+}
+generuj();
+</script>
+<button onclick="sortuj();">Posortuj...</button>
+<button onclick="generuj();">Generuj nowe...</button>
+<br>
+<br>
+<a href="index.html">Powrót do strony głównej</a>
+
+</body>
+</html>
