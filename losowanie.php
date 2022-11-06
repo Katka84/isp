@@ -14,18 +14,20 @@ do {
 $wylosowanaLiczba = rand(1, 49);
 }
 while(in_array($wylosowanaLiczba, $tablicaNaWylosowaneLiczby));
-// in_array zwraca wartość TRUE, jeśli pierwszy element zawiera się w tablicy;
+// in_array zwraca wartość TRUE, jeśli pierwszy element zawiera się w tablicy
 // czyli wraca wtedy do "DO" i rozpoczyna nowe losowanie
-$tablicaNaWylosowaneLiczby[] = $wylosowanaLiczba; // Wylosowana liczba jest zapisywana w tablicy
+$tablicaNaWylosowaneLiczby[] = $wylosowanaLiczba; 
+// Wylosowana liczba jest zapisywana w tablicy
 }
 print '<p style="margin: 1cm; font-size: xx-large; color: #ff0000; text-align: center;">';
-echo implode(", ", $tablicaNaWylosowaneLiczby); // implode zamienia dane tablicy na ciąg znaków
+echo implode(", ", $tablicaNaWylosowaneLiczby); 
+// implode zamienia dane tablicy na ciąg znaków
 print '</p>';
 ?>
 <br>
 <br>
 
-<button style="width: 160px; font-size: medium; text-align: center;" title="Załaduj ponownie..." onclick="parent.location.reload()">Wylosuj...</button>
+<button style="width: 160px; font-size: medium; text-align: center;" title="Załaduj ponownie..." onclick="location.reload();">Wylosuj...</button>
 
 </body>
 </html>
